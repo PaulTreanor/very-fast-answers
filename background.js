@@ -1,13 +1,15 @@
-// background.js - This script runs in the background as a service worker.
-
-// Define an event listener to handle tab updates.
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+// background.js - Extract the search query from a Google search URL.
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if (changeInfo.status === 'complete' && tab.url) {
-    console.log("Tab URL: " + tab.url);
-    
-    // Place your logic for handling tab updates here.
-    // You can also communicate with other parts of your extension from here.
+    const googleSearchURLPattern = /https:\/\/www\.google\..*\/search\?.*q=([^&]+)/;
+    const match = tab.url.match(googleSearchURLPattern);
+
+    if (match) {
+      const searchQuery = decodeURIComponent(match[1].replace(/\+/g, ' '));
+      console.log("User's Google search query:", searchQuery);
+      if (searchQuery.startsWith("gpt!")) {
+        console.log("GPT-3 query detected!")
+      }
+    }
   }
 });
-
-
