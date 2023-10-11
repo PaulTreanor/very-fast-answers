@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "New tab extension",
-    "description": "Base Level Extension",
-    "version": "1.0",
+    "name": "ZapSearch ⚡️",
+    "description": "Access LLMs from your search bar",
+    "version": "0.1",
     "action": {
       "default_icon": "border-48.png"
     },
