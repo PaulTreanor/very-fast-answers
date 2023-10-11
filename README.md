@@ -8,17 +8,20 @@ As the internet becomes more saturated with ads and SEO spam, Google search is b
 
 The DuckDuckGo style `bang` is the easiest user interface for access LLMs that I can think of. Call GPT (or another LLM) directly from your browsers address bar by specifying `gpt!` before your query, this will route your question through the openAI api and a special prompt designed for short concrete answers. 
 
+https://zapsearch.vercel.app/ 
+
 ### To Build
 - ~~Get a browser extension started~~
 - ~~Get browser extension intercepting searches and redirecting~~
 - ~~Set up a placeholder frontend site/design~~
-- Deploy the frontend to Vercel 
+- ~~Deploy the frontend to Vercel~~
 - Get the frontend setup with the OpenAI API calls 
 - Write tests for the frontend and API completions
 - Create some sort of utility library with these API calls 
 - Get browser extension sending openAI query (using utility)
 - Get browser extension to redirect to vercel site and inject query/answer into site
 - Write complete tests for this entire workflow
+- Figure out some way to stop everyone from stealing my openAI bucks 
 
 
 ### Ideas
