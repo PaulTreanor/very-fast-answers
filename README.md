@@ -8,6 +8,23 @@ As the internet becomes more saturated with ads and SEO spam, Google search is b
 
 The DuckDuckGo style `bang` is the easiest user interface for access LLMs that I can think of. Call GPT (or another LLM) directly from your browsers address bar by specifying `gpt!` before your query, this will route your question through the openAI api and a special prompt designed for short concrete answers. 
 
+### To Build
+- ~~Get a browser extension started~~
+- ~~Get browser extension intercepting searches and redirecting~~
+- ~~Set up a placeholder frontend site/design~~
+- Deploy the frontend to Vercel 
+- Get the frontend setup with the OpenAI API calls 
+- Write tests for the frontend and API completions
+- Create some sort of utility library with these API calls 
+- Get browser extension sending openAI query (using utility)
+- Get browser extension to redirect to vercel site and inject query/answer into site
+- Write complete tests for this entire workflow
+
+
+### Ideas
+- Have a twitter/git style query character limit
+- Make Prompt return valid HTML, use that as a slot/component
+
 ### How to use the extension 
 To call an LLM direcly from the Chrome or Firefox address bar, specify the name of the model (or a shortcut) followed by the `!` symbol. 
 
