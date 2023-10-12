@@ -1,0 +1,10 @@
+{
+    "name": "zapsearch-backend",
+    "version": "1.0.0",
+    "type": "module",
+    "dependencies": {
+      "openai": "^4.12.1",
+      "serverless-offline": "^13.2.0"
+    }
+  }
+  
