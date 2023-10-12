@@ -1,17 +1,25 @@
 import { useState, useEffect } from "react";
-import { callGpt } from "./api/generate";
 
 export default function App() {
   // const [query, setQuery] = useState("");
   const [gptResponse, setGptResponse] = useState("");
   
   useEffect(() => {
-    async function fetchData() {
-      let query = "How to roast a chicken?";
-      const response = await callGpt(query);
-      setGptResponse(response);
-    }
-    fetchData();
+    // make a post request to this endpoint http://localhost:3000/ with this json '{ "body": "{ \"query\": \"hello\" }" }'
+    
+    fetch("http://localhost:3000/", {
+      method: "POST",
+      body: JSON.stringify("{ \"query\": \"hello\" }"),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(response => {
+      response.json().then(data => {
+        console.log(data);
+        setGptResponse(data.gptCompletion);
+      })
+    })
   }, []);  // Empty dependency array means this useEffect runs once when the component mounts
 
 

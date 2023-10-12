@@ -13,3 +13,6 @@ functions:
           path: /
           method: post
     environment: ${file(env.json)}
+
+plugins:
+  - serverless-offline
