@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function App() {
-  // const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("How to roast a chicken?");
   const [gptResponse, setGptResponse] = useState("");
-  
-  useEffect(() => {
-    // make a post request to this endpoint http://localhost:3000/ with this json '{ "body": "{ \"query\": \"hello\" }" }'
+
+  const fetchAnswer = () => {
+    const options = {
+      "query": `${query}`
+    };
     
     fetch("http://localhost:3000/", {
       method: "POST",
-      body: JSON.stringify("{ \"query\": \"hello\" }"),
+      body: JSON.stringify(options),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
@@ -20,8 +22,13 @@ export default function App() {
         setGptResponse(data.gptCompletion);
       })
     })
-  }, []);  // Empty dependency array means this useEffect runs once when the component mounts
+  };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      fetchAnswer();
+    }
+  };
 
   return (
     <div className="h-screen bg-gray-50 flex flex-col items-center justify-start pt-36">
@@ -29,21 +36,28 @@ export default function App() {
         <h1 className="text-4xl font-extrabold tracking-tighter">ZapSearch ⚡️</h1>
       </div>
 
-    <div className="md:w-3/4 xl:w-3/5 text-left  mx-auto px-4">
+      <div className="md:w-3/4 xl:w-3/5 text-left mx-auto px-4">
         {/* Input Box */}
         <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
           type="text"
-          className="border-2 border-gray-400 px-4 py-2 w-96 rounded focus:outline-none focus:border-blue-500"
+          className="border-2 border-gray-400 px-4 py-2 w-3/5 rounded focus:outline-none focus:border-blue-500"
           placeholder="What is your query..."
         />
+        {/* Enter Button */}
+        <button onClick={fetchAnswer} className="ml-1 px-4 py-2 rounded bg-blue-500 text-white">
+          Enter
+        </button>
         {/* Query */}
         <p className="text-xl font-bold text-gray-600 mt-6">
-          How to roast a chicken?
+          {query}
         </p>
 
         {/* Answer */}
         <p className="text-2xl mt-2 text-gray-700">
-        {gptResponse}
+          {gptResponse}
         </p>
       </div>
     </div>
