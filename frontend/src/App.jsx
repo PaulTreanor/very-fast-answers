@@ -3,13 +3,22 @@ import { useState } from "react";
 export default function App() {
   const [query, setQuery] = useState("How to roast a chicken?");
   const [gptResponse, setGptResponse] = useState("");
+  const [apiEndpoint, setApiEndpoint] = useState("localhost");  // default to localhost
+
 
   const fetchAnswer = () => {
+    let url;
+    if (apiEndpoint === "localhost") {
+      url = "http://localhost:3000/";
+    } else if (apiEndpoint === "aws") {
+      url = "https://your-aws-url-here.com/";
+    }
+
     const options = {
       "query": `${query}`
     };
     
-    fetch("http://localhost:3000/", {
+    fetch(url, {
       method: "POST",
       body: JSON.stringify(options),
       headers: {
@@ -37,6 +46,12 @@ export default function App() {
       </div>
 
       <div className="md:w-3/4 xl:w-3/5 text-left mx-auto px-4">
+        {/* API Endpoint Selector */}
+        <select onChange={(e) => setApiEndpoint(e.target.value)} className="mb-4 bg-gray-50 border rounded p-1">
+          <option value="localhost">Localhost</option>
+          <option value="aws">AWS</option>
+        </select>
+        <br />
         {/* Input Box */}
         <input
           value={query}
