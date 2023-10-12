@@ -6,6 +6,22 @@
 - This API calls the OpenAI completions API, which must be run on a server. 
 - If there's CORS issues with this when it's deployed I can fix it (documentation is poor)
 
+### Setup 
+1. Install bun 
+```bash
+# To do this on Windows you must use WSL
+curl -fsSL https://bun.sh/install | bash
+```
+2. Install serverless framework 
+``` bash
+bun i -g serverless
+```
+
+3. Install dependencies
+```bash
+bun i
+```
+
 ### The API 
 The API accepts JSON, with a "query" object that is a string. For example:
 
@@ -35,5 +51,7 @@ serverless invoke local --function api --data '{ "body": "{ \"query\": \"hello\"
 serverless offline
 ```
 
-
-
+### Testing 
+- Testing using [bun test runner](https://bun.sh/docs/cli/test).
+- Test files should be named `<what-you're-testing>.test.js`
+- Run tests with `bun test`
