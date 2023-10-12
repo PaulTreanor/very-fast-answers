@@ -1,23 +1,25 @@
+import { callGpt } from "./generate.js";
+
 const handler = async (event) => {
   try {
     const requestBody = JSON.parse(event.body);
-    const { text } = requestBody;
+    const { query } = requestBody;
 
-    if (!text || typeof text !== "string") {
+    if (!query || typeof query !== "string") {
       return {
         statusCode: 400,
         body: JSON.stringify({
-          message: "Invalid input. Please send a JSON object with a 'text' property as a string.",
+          message: "Invalid input. Please send a JSON object with a 'query' property as a string.",
         }),
       };
     }
 
-    const upperCaseText = text.toUpperCase();
+    const gptCompletion = await callGpt(query);
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        upperCaseText,
+        gptCompletion,
       }),
     };
   } catch (error) {

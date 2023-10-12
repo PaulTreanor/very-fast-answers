@@ -12,3 +12,4 @@ functions:
       - httpApi:
           path: /
           method: post
+    environment: ${file(env.json)}
