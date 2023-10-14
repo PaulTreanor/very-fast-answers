@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "./components/Cards";
+import Result from "./components/Result";
 import ApiEndpointSelector from "./components/ApiEndpointSelector";
 import TitleSection from "./TitleSection";
 
@@ -12,12 +13,12 @@ export default function App() {
     {
       stepNumber: 1,
       stepName: "Analysing keywords",
-      status: "done"
+      status: "none"
     }, 
     {
       stepNumber: 2,
       stepName: "Searching relevant news",
-      status: "loading"
+      status: "none"
     },
     {
       stepNumber: 3,
@@ -90,7 +91,7 @@ export default function App() {
           ))}
         </div>
         
-
+        < Result />
         
       </div>
     </div>
