@@ -14,7 +14,6 @@ const handler = async (event) => {
         }),
       };
     }
-
     const gptCompletion = await callGpt(queryType, query);
 
     return {

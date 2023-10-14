@@ -5,7 +5,6 @@ const openai = new OpenAI({
 });
 
 export async function callGpt(requestType, request) {
-  console.log(request);
   const query = request || "";
   if (query.trim().length === 0) {
     throw new Error("Please enter a valid query");
@@ -39,7 +38,9 @@ function formatContent(queryType, query) {
 }
 
 function generatePrimaryKeyPrompt(query) {
-  return `Extract the primary keywords from this sentence: '${query}'`;
+  return `Extract the primary keywords from this sentence: '${query}'
+  
+  Return the keywords in a json list with a similar structure: "primaryKeywords": ["investment", "vodafone", "banking"]`;
 }
 
 function generateArticleRelevancePrompt(query) {
