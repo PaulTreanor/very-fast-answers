@@ -1,4 +1,4 @@
-import { callGpt } from "../generate.js";
+import { callGpt } from "../selection-service/rate-articles.js";
 
 const handler = async (event) => {
   try {
@@ -14,7 +14,7 @@ const handler = async (event) => {
         }),
       };
     }
-    const gptCompletion = await callGpt(queryType, query);
+    const gptCompletion = await callGpt(query);
 
     return {
       statusCode: 200,

@@ -37,6 +37,9 @@ function searchGoogle(keywords) {
         .then(response => response.json())
         .then(jsonData => {
             console.log(removeCrapFromJSON(jsonData))
+            jsonData = removeCrapFromJSON(jsonData)
+            jsonData = JSON.stringify(jsonData, null, 2)
+            console.log(jsonData)
             return jsonData
         })
 }
