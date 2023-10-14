@@ -43,10 +43,6 @@ function generatePrimaryKeyPrompt(query) {
   Return the keywords in a json list with a similar structure: "primaryKeywords": ["investment", "vodafone", "banking"]`;
 }
 
-function generateArticleRelevancePrompt(query) {
-  return `For the following news articles : '${query}'`;
-}
-
 function generatePrompt(query) {
   return `
   You are a bot that delivers informative accurate answers. You will receive short queries that you should answer in less than 3 sentences (or less, if possible).

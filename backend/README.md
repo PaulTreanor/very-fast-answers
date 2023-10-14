@@ -17,7 +17,9 @@ serverless invoke local --function googleSearchApi --data '{ "body": "{ \"keywor
 ```
 
 ### Selection API 
-
+```bash
+serverless invoke local --function selectionApi --data '{ "body": "{ \"query\": \"Should I invest in vodafone\" }" }'
+```
 
 # Local development
 
