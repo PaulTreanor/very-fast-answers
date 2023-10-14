@@ -27,17 +27,19 @@ export default function Result() {
     }
 
   return (
-    <div className='resultContainer'>
-        <div className='deltaScore'>
-            {object.deltaScore}
-        </div>
-        {object.summaries.map((summary) => 
-            <div key={summary.id} className='summary'> 
-                <h1>{summary.title}</h1>
-                <p>{summary.summary}</p>
-                <p><a href={summary.link}>{summary.link}</a></p>
-            </div>
-        )}
+    <div className='resultContainer max-w-1/2'>
+    <div className='deltaScore font-bold text-lg text-center'>
+        <h1>&Delta; {object.deltaScore}</h1>
     </div>
+    {object.summaries.map((summary) => 
+        <div key={summary.id} className='summary border rounded-lg hover:shadow-md p-4 hover:bg-blue-100'>
+            <h1>{summary.title}</h1>
+            <p>{summary.summary}</p>
+            <p><a href={summary.link} className='text-blue-500'>{summary.link}</a></p>
+        </div>
+    )}
+</div>
+
+
   )
 }
