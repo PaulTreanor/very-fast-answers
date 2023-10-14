@@ -1,5 +1,7 @@
-// const GOOGLE_SEARCH_API_KEY = AIzaSyDO7bnm1UXmS60iFDR9ZGMOARTMIubBjis 
-// const SEARCH_ENGINE_ID = b18f4db7e156d4460
+import fetch from 'node-fetch'
+
+const googleSearchApiKey = "AIzaSyDO7bnm1UXmS60iFDR9ZGMOARTMIubBjis"
+const searchEngineId = "b18f4db7e156d4460"
 
 const keywords = ["buy shares", "financial institution", "make money"]
 
@@ -9,15 +11,25 @@ function encodeKeywordsForUrl(keywords) {
     return encodeURIComponent(quotedKeywords)
 }
 
-console.log(encodeKeywordsForUrl(keywords))
+function createGoogleSearchURL(googleSearchApiKey, searchEngineId, quotedKeywords) {
+    const url = `https://www.googleapis.com/customsearch/v1?key=${googleSearchApiKey}&cx=${searchEngineId}&q=${quotedKeywords}`
+    return url
+}
 
-curl "https://www.googleapis.com/customsearch/v1?key=AIzaSyDO7bnm1UXmS60iFDR9ZGMOARTMIubBjis&cx=b18f4db7e156d4460&q=%22powered%20by%20datasette%22%20-site%3Agithub.com%20-site%3Asimonwillison.net%20-site%3Adatasette.io%20-site%3Apypi.org"
+function searchGoogle(keywords) {
+    // URL encode the list into a string of words
+    const encodedSearchString = encodeKeywordsForUrl(keywords)
+    // Create the google api call using the encoded search term
+    const url = createGoogleSearchURL(googleSearchApiKey, searchEngineId, encodedSearchString)
+    // Call that api url 
+    fetch(url)
+        .then(response => response.json())
+        .then(jsonData => {
+            console.log(jsonData)
+            return jsonData
+        })
+}
 
+searchGoogle(keywords)
 
-// given a list of keywords
-// url encode the list into a string of words
-
-// create the google api call using the encoded search term
-// call that api url 
-// return the results
 
