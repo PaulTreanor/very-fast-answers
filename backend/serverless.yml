@@ -6,18 +6,18 @@ provider:
   runtime: nodejs18.x
 
 functions:
-  api:
-    handler: handlers/gpt-handler.handler
+  keywordsApi:
+    handler: handlers/keywords-handler.handler
     events:
       - httpApi:
-          path: /
+          path: /getKeywords
           method: post
     environment: ${file(env.json)}
-  scraperAPI:
-    handler: handlers/web-scraper-handler.handler
+  googleSearchApi:
+    handler: handlers/search-handler.handler
     events:
       - httpApi:
-          path: /scrape
+          path: /getSearchResults
           method: post
 
 plugins:
