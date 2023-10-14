@@ -1,10 +1,13 @@
 {
-    "name": "zapsearch-backend",
-    "version": "1.0.0",
-    "type": "module",
-    "dependencies": {
-      "openai": "^4.12.1",
-      "serverless-offline": "^13.2.0"
-    }
+  "name": "zapsearch-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "openai": "^4.12.1",
+    "playwright": "^1.39.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^13.2.0"
   }
-  
+}
