@@ -42,7 +42,7 @@ export default function App() {
   return (
     <div className="h-screen bg-gray-50 flex flex-col items-center justify-start pt-36">
       <div className="absolute top-0 left-0 ml-8 mt-6">
-        <h1 className="text-4xl font-extrabold tracking-tighter">ZapSearch ⚡️</h1>
+        <h1 className="text-4xl font-extrabold tracking-tighter">Risk Analyser</h1>
       </div>
 
       <div className="md:w-3/4 xl:w-3/5 text-left mx-auto px-4">
