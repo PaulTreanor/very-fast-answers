@@ -100,8 +100,9 @@ export default function App() {
       }
 
       const options = {
-        query: '{ "keywords": ["hello"] }',
+        query: { "keywords": ["hello"] },
       };
+
 
       fetch(url, {
         method: "POST",

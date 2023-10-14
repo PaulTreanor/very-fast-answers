@@ -6,7 +6,6 @@ const openai = new OpenAI({
 });
  
 export async function callGpt (req, res) {
-  console.log(req)
   const query = req || '';
   if (query.trim().length === 0) {
     throw new Error("Please enter a valid query");
@@ -14,7 +13,6 @@ export async function callGpt (req, res) {
 
   try {
     const prompt = generatePrompt(query, searchData)
-    console.log({prompt: prompt})
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [

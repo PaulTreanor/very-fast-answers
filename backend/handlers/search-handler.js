@@ -3,7 +3,7 @@ import { searchGoogle } from "../google-search-service/google-search-api.js";
 const handler = async (event) => {
   try {
     const requestBody = JSON.parse(event.body);
-    const { keywords } = requestBody;
+    const { keywords } = requestBody.query;
     
     const searchResults = await searchGoogle(keywords);
 
