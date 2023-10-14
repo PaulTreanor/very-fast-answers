@@ -13,17 +13,17 @@ export default function App() {
     {
       stepNumber: 1,
       stepName: "Analysing keywords",
-      status: "none"
+      status: "done"
     }, 
     {
       stepNumber: 2,
       stepName: "Searching relevant news",
-      status: "none"
+      status: "done"
     },
     {
       stepNumber: 3,
       stepName: "Searching relevant news",
-      status: "none"
+      status: "done"
     }
   ]
 
@@ -82,6 +82,7 @@ export default function App() {
         </button>
 
         {/* Progress cards */}
+        {dataFlowSteps[dataFlowSteps.length - 1].status != "done" ? 
         <div  className="flex ">
           { dataFlowSteps.map((step) => (
             step.status != "none" &&
@@ -90,9 +91,10 @@ export default function App() {
             </div>
           ))}
         </div>
-        
+        :
         < Result />
         
+          }
       </div>
     </div>
   );
