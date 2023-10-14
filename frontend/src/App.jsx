@@ -1,10 +1,31 @@
 import { useState } from "react";
+import Card from "./components/Cards";
+import Result from "./components/Result";
+import ApiEndpointSelector from "./components/ApiEndpointSelector";
+import TitleSection from "./TitleSection";
 
 export default function App() {
-  const [query, setQuery] = useState("How to roast a chicken?");
+  const [query, setQuery] = useState("Should I invest in Vodafone?");
   const [gptResponse, setGptResponse] = useState("");
   const [apiEndpoint, setApiEndpoint] = useState("localhost");  // default to localhost
 
+  const dataFlowSteps = [
+    {
+      stepNumber: 1,
+      stepName: "Analysing keywords",
+      status: "none"
+    }, 
+    {
+      stepNumber: 2,
+      stepName: "Searching relevant news",
+      status: "none"
+    },
+    {
+      stepNumber: 3,
+      stepName: "Searching relevant news",
+      status: "none"
+    }
+  ]
 
   const fetchAnswer = () => {
     let url;
@@ -41,16 +62,9 @@ export default function App() {
 
   return (
     <div className="h-screen bg-gray-50 flex flex-col items-center justify-start pt-36">
-      <div className="absolute top-0 left-0 ml-8 mt-6">
-        <h1 className="text-4xl font-extrabold tracking-tighter">Risk Analyser</h1>
-      </div>
-
+      < TitleSection />
       <div className="md:w-3/4 xl:w-3/5 text-left mx-auto px-4">
-        {/* API Endpoint Selector */}
-        <select onChange={(e) => setApiEndpoint(e.target.value)} className="mb-4 bg-gray-50 border rounded p-1">
-          <option value="localhost">Localhost</option>
-          <option value="aws">AWS</option>
-        </select>
+        <ApiEndpointSelector apiEndpoint={apiEndpoint} setApiEndpoint={setApiEndpoint}/>
         <br />
         {/* Input Box */}
         <input
@@ -66,15 +80,19 @@ export default function App() {
         <button onClick={fetchAnswer} className="ml-1 px-4 py-2 rounded bg-blue-500 text-white">
           Enter
         </button>
-        {/* Query */}
-        <p className="text-xl font-bold text-gray-600 mt-6">
-          {query}
-        </p>
 
-        {/* Answer */}
-        <p className="text-2xl mt-2 text-gray-700">
-          {gptResponse}
-        </p>
+        {/* Progress cards */}
+        <div  className="flex ">
+          { dataFlowSteps.map((step) => (
+            step.status != "none" &&
+            <div key={step.stepNumber} className="mr-5">
+              <Card status={step.status} stepNumber={step.stepNumber} stepName={step.stepName} className="" />
+            </div>
+          ))}
+        </div>
+        
+        < Result />
+        
       </div>
     </div>
   );
