@@ -41,8 +41,6 @@ function searchGoogle(keywords) {
         })
 }
 
-searchGoogle(keywords)
-
 export { searchGoogle }
 
 
