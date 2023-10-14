@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 const googleSearchApiKey = "AIzaSyDO7bnm1UXmS60iFDR9ZGMOARTMIubBjis"
 const searchEngineId = "b18f4db7e156d4460"
 
-const keywords = ["buy shares", "financial institution", "make money"]
+const keywords = ["buy shares", "invest", "natural gas", "news", "october 2023", "bbc", "fox"]
 
 // keywords must be url encoded - "" around search terms becomes %22, " " becomes %20
 function encodeKeywordsForUrl(keywords) {
@@ -16,6 +16,17 @@ function createGoogleSearchURL(googleSearchApiKey, searchEngineId, quotedKeyword
     return url
 }
 
+function removeCrapFromJSON(jsonData) {
+    const cleanedData = jsonData.items.map(item => {
+        return {
+            title: item.title,
+            link: item.link,
+            snippet: item.snippet
+        }
+    })
+    return cleanedData
+}
+
 function searchGoogle(keywords) {
     // URL encode the list into a string of words
     const encodedSearchString = encodeKeywordsForUrl(keywords)
@@ -25,11 +36,13 @@ function searchGoogle(keywords) {
     fetch(url)
         .then(response => response.json())
         .then(jsonData => {
-            console.log(jsonData)
+            console.log(removeCrapFromJSON(jsonData))
             return jsonData
         })
 }
 
 searchGoogle(keywords)
+
+export { searchGoogle }
 
 

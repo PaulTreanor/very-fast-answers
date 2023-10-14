@@ -23,19 +23,11 @@ bun i
 ```
 
 ### The API 
-The API accepts JSON, with a "query" object that is a string. For example:
 
-```json 
-{ "query": "How do I roast a chicken?"}
-```
+**Search API**
 
-It returns a body with a status code and a completion (response) to the query:
-
-```json
-{
-    "statusCode": 200,
-    "body": "{\"upperCaseText\":\"HELLO\"}"
-}
+```bash
+serverless invoke local --function googleSearchAPI --data '{ "body": "{ \"keywords\": [\"hello\"] }" }
 ```
 
 ### Local development
@@ -43,7 +35,7 @@ It returns a body with a status code and a completion (response) to the query:
 You can invoke your function locally by using the following command:
 
 ```bash
-serverless invoke local --function hello
+c
 
 serverless invoke local --function api --data '{ "body": "{ \"query\": \"hello\" }" }'
 

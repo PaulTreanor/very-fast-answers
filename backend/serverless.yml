@@ -13,8 +13,8 @@ functions:
           path: /
           method: post
     environment: ${file(env.json)}
-  scraperAPI:
-    handler: handlers/web-scraper-handler.handler
+  googleSearchAPI:
+    handler: handlers/search-handle.handler
     events:
       - httpApi:
           path: /scrape

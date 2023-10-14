@@ -3,12 +3,77 @@ This service **takes a list of keywords** and **returns a list of URLs** that ar
 
 This service uses the [Google Search API](https://til.simonwillison.net/google/json-api-programmable-search-engine). This article is a great summary. 
 
+It returns 10 items
+
+```json
+[
+  {
+    title: "What Is A Money Market Account? | Bankrate",
+    link: "https://www.bankrate.com/banking/mma/what-is-a-money-market-account/",
+    snippet: "Jul 6, 2023 ... Here's an explanation for how we make money ... Deposit money at a financial institution online or in person, Buy shares at a brokerage, bank or ..."
+  },
+  {
+    title: "4 Best Gold ETFs for October 2023 - NerdWallet",
+    link: "https://www.nerdwallet.com/article/investing/best-gold-etfs",
+    snippet: "Oct 2, 2023 ... Investors buy shares in the fund, whose value rises and falls with the underlying gold price or company stock value. Gold is considered a ..."
+  },
+  {
+    title: "Investing in Credit Card Companies",
+    link: "https://www.investopedia.com/articles/stocks/09/credit-card-company-invest.asp",
+    snippet: "Sep 30, 2021 ... Investors can buy shares in one or more of the credit card networks or ... A financial institution (FI) is a company that focuses on dealing ..."
+  },
+  {
+    title: "SoFi Active Investing Review 2023: Pros, Cons and How It ...",
+    link: "https://www.nerdwallet.com/reviews/investing/brokers/sofi-active-investing",
+    snippet: "Oct 4, 2023 ... It also offers ADRs, or American depository receipts, which allow customers to easily buy shares in foreign companies. ... financial institution, ..."
+  },
+  {
+    title: "Choosing A Financial Planner",
+    link: "https://portal.ct.gov/DOB/Consumer/Consumer-Education/Choosing-A-Financial-Planner",
+    snippet: "\"I do perceive here a divided duty.\" William Shakespeare. Financial planners are in business to make money. When you first visit or contact the planner, ask ..."
+  },
+  {
+    title: "Shares - Ways to Invest | Financial Markets Authority",
+    link: "https://www.fma.govt.nz/consumer/investing/types-of-investments/shares/",
+    snippet: "Jun 6, 2023 ... Financial Institution licensing · Fair Conduct Programme · Financial ... When you buy shares, you're buying a small part of a company. You ..."
+  },
+  {
+    title: "7 Ways to Make Money Daily With Investments - SmartAsset",
+    link: "https://smartasset.com/investing/how-to-invest-and-make-money-daily",
+    snippet: "Jan 26, 2023 ... Interest is income you receive in exchange for giving your money to a financial institution, corporation or government entity to use for a time."
+  },
+  {
+    title: "Stock warrants: What are they and how do they work? | Empower",
+    link: "https://www.empower.com/the-currency/money/stock-warrants",
+    snippet: "The bonds had wedded warrants attached to them, meaning investors could exercise the warrant to buy shares of stock, but would have to surrender the bond to do ..."
+  },
+  {
+    title: "Glossary - Moneysmart.gov.au",
+    link: "https://moneysmart.gov.au/glossary",
+    snippet: "BSB. A six-digit number that identifies a specific branch of a bank or other financial institution within Australia. ... buy shares in one or more of those sub ..."
+  },
+  {
+    title: "Guide to Buying ANZ Shares – Forbes Advisor Australia",
+    link: "https://www.forbes.com/advisor/au/investing/how-to-buy-anz-shares/",
+    snippet: "Sep 14, 2023 ... Choose a Trading Platform or Broker: You must use a stockbroking service or an online trading platform to buy shares. ... financial institution ..."
+  }
+```
+
+
+
+
+
+# Ignore everything below this
+
 ## How to use 
 SEARCH_ENGINE_ID = b18f4db7e156d4460
 
 GOOGLE_SEARCH_API_KEY=AIzaSyDO7bnm1UXmS60iFDR9ZGMOARTMIubBjis 
 
 curl "https://www.googleapis.com/customsearch/v1?key=AIzaSyDO7bnm1UXmS60iFDR9ZGMOARTMIubBjis&cx=b18f4db7e156d4460&q=%22powered%20by%20datasette%22%20-site%3Agithub.com%20-site%3Asimonwillison.net%20-site%3Adatasette.io%20-site%3Apypi.org"
+
+https://www.googleapis.com/customsearch/v1?key=AIzaSyDO7bnm1UXmS60iFDR9ZGMOARTMIubBjis&cx=b18f4db7e156d4460&q=%22powered%20by%20datasette%22%20-site%3Agithub.com%20-site%3Asimonwillison.net%20-site%3Adatasette.io%20-site%3Apypi.org
+https://www.googleapis.com/customsearch/v1?key=AIzaSyD-7bnm1UXmS60iFDR9ZGMOARTMIubBjis&cx=b18f4db7e156d4460&q=%22buy%20shares%22%20%22financial%20institution%22%20%22make%20money%22
 
 ```bash
 curl "https://www.googleapis.com/customsearch/v1?key=AIzaSyDO7bnm1UXmS60iFDR9ZGMOARTMIubBjis&cx=b18f4db7e156d4460&q=%22powered%20by%20datasette%22%20-site%3Agithub.com%20-site%3Asimonwillison.net%20-site%3Adatasette.io%20-site%3Apypi.org"
