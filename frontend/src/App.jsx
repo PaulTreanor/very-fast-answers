@@ -18,6 +18,11 @@ export default function App() {
       stepNumber: 2,
       stepName: "Searching relevant news",
       status: "loading"
+    },
+    {
+      stepNumber: 3,
+      stepName: "Searching relevant news",
+      status: "none"
     }
   ]
 
@@ -78,6 +83,7 @@ export default function App() {
         {/* Progress cards */}
         <div  className="flex ">
           { dataFlowSteps.map((step) => (
+            step.status != "none" &&
             <div key={step.stepNumber} className="mr-5">
               <Card status={step.status} stepNumber={step.stepNumber} stepName={step.stepName} className="" />
             </div>
