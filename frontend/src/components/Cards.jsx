@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import Spinner from './Spinner';
 import DoneCircle from './DoneCircle';
 
-const Card = ({ status }) => {
+const Card = ({ status, stepNumber, stepName }) => {
     // status can be "loading" or "done"
 
     const cardClasses = `bg-white rounded-lg p-4 border border-gray-950 ${
@@ -23,8 +23,6 @@ const Card = ({ status }) => {
                     <span className="pt-20 text-gray-800 animate-pulse">Loading...</span>
                 </div>
                 ) : (<></>)}
-                
-                
             </div>
             </div>
         </div>
