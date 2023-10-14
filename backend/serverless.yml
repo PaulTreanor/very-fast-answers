@@ -19,6 +19,13 @@ functions:
       - httpApi:
           path: /getSearchResults
           method: post
+  selectionApi:
+    handler: handlers/selection-handler.handler
+    events:
+      - httpApi:
+          path: /getSelection
+          method: post
+    environment: ${file(env.json)}
 
 plugins:
   - serverless-offline
