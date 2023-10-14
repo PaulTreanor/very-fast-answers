@@ -1,7 +1,8 @@
 import { useState } from "react";
+import Card from "./components/Cards";
 
 export default function App() {
-  const [query, setQuery] = useState("How to roast a chicken?");
+  const [query, setQuery] = useState("Should I invest in Vodafone?");
   const [gptResponse, setGptResponse] = useState("");
   const [apiEndpoint, setApiEndpoint] = useState("localhost");  // default to localhost
 
@@ -42,7 +43,8 @@ export default function App() {
   return (
     <div className="h-screen bg-gray-50 flex flex-col items-center justify-start pt-36">
       <div className="absolute top-0 left-0 ml-8 mt-6">
-        <h1 className="text-4xl font-extrabold tracking-tighter">Risk Analyser</h1>
+        <h1 className="text-4xl font-extrabold tracking-tighter text-blue-700">𝚫Search </h1>
+        <p className="text-xl font-semibold text-gray-600 mt-3">For rapidly changing circumstances</p>
       </div>
 
       <div className="md:w-3/4 xl:w-3/5 text-left mx-auto px-4">
@@ -66,15 +68,10 @@ export default function App() {
         <button onClick={fetchAnswer} className="ml-1 px-4 py-2 rounded bg-blue-500 text-white">
           Enter
         </button>
-        {/* Query */}
-        <p className="text-xl font-bold text-gray-600 mt-6">
-          {query}
-        </p>
 
-        {/* Answer */}
-        <p className="text-2xl mt-2 text-gray-700">
-          {gptResponse}
-        </p>
+        {/* Progress cards */}
+        <Card status="done" />
+        
       </div>
     </div>
   );
