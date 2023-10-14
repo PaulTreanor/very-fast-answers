@@ -7,17 +7,17 @@ provider:
 
 functions:
   keywordsApi:
-    handler: handlers/gpt-handler.handler
+    handler: handlers/keywords-handler.handler
     events:
       - httpApi:
-          path: /
+          path: /getKeywords
           method: post
     environment: ${file(env.json)}
   googleSearchApi:
-    handler: handlers/search-handle.handler
+    handler: handlers/search-handler.handler
     events:
       - httpApi:
-          path: /scrape
+          path: /getSearchResults
           method: post
 
 plugins:

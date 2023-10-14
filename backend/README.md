@@ -4,7 +4,7 @@
 
 # The API 
 
-### Get keywords
+### Keywords API
 
 ```bash
 serverless invoke local --function keywordsApi --data '{ "body": "{ \"queryType\":  \"keywords\", \"query\": \"Should I invest in vodafone\" }" }
@@ -16,6 +16,7 @@ serverless invoke local --function keywordsApi --data '{ "body": "{ \"queryType\
 serverless invoke local --function googleSearchApi --data '{ "body": "{ \"keywords\": [\"hello\"] }" }
 ```
 
+### Selection API 
 
 
 # Local development
