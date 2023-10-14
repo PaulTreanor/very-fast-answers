@@ -1,6 +1,6 @@
 # ZapSearch backend API
 
-**Do not under any circumstances use my API outside of the `.env` file in the `backend` service (This is `.gitignore`-ed)**
+**Do not under any circumstances use my API key outside of the `env.json` file in the `backend` service (This is `.gitignore`-ed)**
 
 - This is a HTTP API made with node.js running on AWS Lambda and API Gateway using the Serverless Framework.v
 - This API calls the OpenAI completions API, which must be run on a server. 
@@ -50,8 +50,3 @@ serverless invoke local --function api --data '{ "body": "{ \"query\": \"hello\"
 ## Run entire API on localhost
 serverless offline
 ```
-
-### Testing 
-- Testing using [bun test runner](https://bun.sh/docs/cli/test).
-- Test files should be named `<what-you're-testing>.test.js`
-- Run tests with `bun test`

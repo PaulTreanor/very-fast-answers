@@ -54,6 +54,7 @@ export default function App() {
         <br />
         {/* Input Box */}
         <input
+          id="query-box"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyPress={handleKeyPress}

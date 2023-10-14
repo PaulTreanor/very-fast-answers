@@ -7,12 +7,18 @@ provider:
 
 functions:
   api:
-    handler: index.handler
+    handler: gpt-handler.handler
     events:
       - httpApi:
           path: /
           method: post
     environment: ${file(env.json)}
+  # scraperAPI:
+  #   handler: web-scraper-handler.handler
+  #   events:
+  #     - httpApi:
+  #         path: /
+  #         method: post
 
 plugins:
   - serverless-offline

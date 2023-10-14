@@ -12,7 +12,6 @@ export async function callGpt (req, res) {
   }
 
   try {
-   
     const completion = await openai.completions.create({
       model: "text-davinci-003",
       prompt: generatePrompt(query),

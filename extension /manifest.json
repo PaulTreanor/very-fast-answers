@@ -6,7 +6,8 @@
     "action": {
       "default_icon": "border-48.png"
     },
-    "permissions": ["tabs"],
+    "permissions": ["tabs", "scripting"],
+    "host_permissions": ["http://*/*", "https://*/*"],
     "background": {
         "service_worker": "background.js"
     }

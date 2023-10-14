@@ -1,12 +1,12 @@
 # Frontend
-
 Pretty simple frontend with React (vite) and TailwindCSS. 
 
 The frontend calls the backend so it must be running first. So far it's only set up to call the backend if it's running locally. 
 
 ## Run it 
 ```bash
-bun i
+# if you see bun, you can also use npm 
+bun i 
 bun run dev
 ```
 
