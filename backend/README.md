@@ -7,13 +7,13 @@
 ### Keywords API
 
 ```bash
-serverless invoke local --function keywordsApi --data '{ "body": "{ \"queryType\":  \"keywords\", \"query\": \"Should I invest in vodafone\" }" }
+serverless invoke local --function keywordsApi --data '{ "body": "{ \"queryType\":  \"keywords\", \"query\": \"Should I invest in vodafone\" }" }'
 ```
 
 ### Search API
 
 ```bash
-serverless invoke local --function googleSearchApi --data '{ "body": "{ \"keywords\": [\"hello\"] }" }
+serverless invoke local --function googleSearchApi --data '{ "body": "{ \"keywords\": [\"hello\"] }" }'
 ```
 
 ### Selection API 
