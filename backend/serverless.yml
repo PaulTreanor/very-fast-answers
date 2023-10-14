@@ -6,14 +6,14 @@ provider:
   runtime: nodejs18.x
 
 functions:
-  api:
+  keywordsApi:
     handler: handlers/gpt-handler.handler
     events:
       - httpApi:
           path: /
           method: post
     environment: ${file(env.json)}
-  googleSearchAPI:
+  googleSearchApi:
     handler: handlers/search-handle.handler
     events:
       - httpApi:
