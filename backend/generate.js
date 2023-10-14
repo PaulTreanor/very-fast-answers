@@ -14,7 +14,9 @@ export async function callGpt(requestType, request) {
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: formatPrompt(requestType, request) }],
+      messages: [
+        { role: "user", content: formatContent(requestType, request) },
+      ],
       max_tokens: 30,
       temperature: 0.6,
     });
@@ -28,7 +30,7 @@ export async function callGpt(requestType, request) {
   }
 }
 
-function formatPrompt(queryType, query) {
+function formatContent(queryType, query) {
   if (queryType === "keywords") {
     return generatePrimaryKeyPrompt(query);
   } else if (queryType === "generic") {
@@ -38,6 +40,10 @@ function formatPrompt(queryType, query) {
 
 function generatePrimaryKeyPrompt(query) {
   return `Extract the primary keywords from this sentence: '${query}'`;
+}
+
+function generateArticleRelevancePrompt(query) {
+  return `For the following news articles : '${query}'`;
 }
 
 function generatePrompt(query) {

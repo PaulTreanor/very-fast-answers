@@ -7,11 +7,16 @@ const handler = async (siteUrl) => {
   });
 
   const page = await browser.newPage();
+  // go to the site
   await page.goto(siteUrl);
-  await page.waitForTimeout(5000);
-  await browser.close();
 
-  // TODO get page body
+  // Get the raw HTML content of the entire page
+  const pageContent = await page.content();
+
+  // Print or use the raw HTML content
+  console.log(pageContent);
+
+  await browser.close();
 };
 
 export { handler };

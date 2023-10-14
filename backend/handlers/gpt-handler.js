@@ -3,7 +3,7 @@ import { callGpt } from "../generate.js";
 const handler = async (event) => {
   try {
     const requestBody = JSON.parse(event.body);
-    const { query, queryType } = requestBody;
+    const { queryType, query } = requestBody;
 
     if (!query || typeof query !== "string") {
       return {
