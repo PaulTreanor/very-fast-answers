@@ -12,7 +12,7 @@ const Card = ({ status, stepNumber, stepName }) => {
     return (
         <div className={cardClasses + "card w-56 h-72 shadow-xl my-10 text-center"}>
             <div className="card-body">
-                <h2 className="pt-4 text-3xl text-gray-700">Analysing keywords</h2>
+                <h2 className="pt-4 text-3xl text-gray-700">{stepName}</h2>
                 <div role="status">
                 <div className='mt-10'>
                     {status === 'done' ? <DoneCircle /> : <Spinner />}

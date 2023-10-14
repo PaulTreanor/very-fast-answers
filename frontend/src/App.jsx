@@ -8,6 +8,18 @@ export default function App() {
   const [gptResponse, setGptResponse] = useState("");
   const [apiEndpoint, setApiEndpoint] = useState("localhost");  // default to localhost
 
+  const dataFlowSteps = [
+    {
+      stepNumber: 1,
+      stepName: "Analysing keywords",
+      status: "done"
+    }, 
+    {
+      stepNumber: 2,
+      stepName: "Searching relevant news",
+      status: "loading"
+    }
+  ]
 
   const fetchAnswer = () => {
     let url;
@@ -64,7 +76,15 @@ export default function App() {
         </button>
 
         {/* Progress cards */}
-        <Card status="done" />
+        <div  className="flex ">
+          { dataFlowSteps.map((step) => (
+            <div key={step.stepNumber} className="mr-5">
+              <Card status={step.status} stepNumber={step.stepNumber} stepName={step.stepName} className="" />
+            </div>
+          ))}
+        </div>
+        
+
         
       </div>
     </div>
