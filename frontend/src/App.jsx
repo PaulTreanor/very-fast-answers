@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import Card from "./components/Cards";
 import Result from "./components/Result";
-import ApiEndpointSelector from "./components/ApiEndpointSelector";
+// import ApiEndpointSelector from "./components/ApiEndpointSelector";
 import TitleSection from "./TitleSection";
 
 export default function App() {
   const [query, setQuery] = useState("Should I invest in Vodafone?");
   const [gptResponse, setGptResponse] = useState("");
   const [apiEndpoint, setApiEndpoint] = useState("localhost");
+  const [results, setResults] = useState(null);
 
   const [step1Complete, setStep1Progress] = useState("none");
   const [step2Complete, setStep2Progress] = useState("none");
@@ -42,7 +43,12 @@ export default function App() {
       // Call the second API, using data from the first response if needed
       setStep2Progress("loading");
       const response2 = await fetchNewsArticles(promptKeyWords.gptCompletion);
+    
+      
+      
+      
       setStep2Progress("done");
+      setResults(response2);
       // Process response2 or do something with it
 
       // Continue with more API calls as needed
@@ -80,7 +86,6 @@ export default function App() {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
           setGptResponse(data.gptCompletion);
           resolve(data); // Resolve the Promise with the API response data
         })
@@ -90,7 +95,12 @@ export default function App() {
     });
   };
 
-  const fetchNewsArticles = () => {
+  const fetchNewsArticles = (completion) => {
+    const wordList = JSON.parse(completion).primaryKeywords
+    // clean up the word list/remove whitespace etc
+    const cleanWordList = wordList.map(word => word.replace(/\s/g, ''))
+    console.log(cleanWordList)
+
     return new Promise((resolve, reject) => {
       let url;
       if (apiEndpoint === "localhost") {
@@ -100,7 +110,7 @@ export default function App() {
       }
 
       const options = {
-        query: { "keywords": ["hello"] },
+        query: { "keywords": JSON.parse(completion).primaryKeywords },
       };
 
 
@@ -118,7 +128,6 @@ export default function App() {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
           // setGptResponse(data.gptCompletion);
           resolve(data); // Resolve the Promise with the API response data
         })
@@ -138,10 +147,10 @@ export default function App() {
     <div className="h-screen bg-gray-50 flex flex-col items-center justify-start pt-36">
       <TitleSection />
       <div className="md:w-3/4 xl:w-3/5 text-left mx-auto px-4">
-        <ApiEndpointSelector
+        {/* <ApiEndpointSelector
           apiEndpoint={apiEndpoint}
           setApiEndpoint={setApiEndpoint}
-        />
+        /> */}
         <br />
         {/* Input Box */}
         <input
@@ -162,6 +171,7 @@ export default function App() {
         </button>
 
         {/* Progress cards */}
+        { step2Complete !== 'done' &&
         <div className="flex ">
           {dataFlowSteps.map(
             (step) =>
@@ -177,8 +187,10 @@ export default function App() {
               )
           )}
         </div>
+        }
 
-        <Result />
+        {/* { (step2Complete ==='done' && results) && <Result results={results} />} */}
+        { (step2Complete ==='done' && results) && <Result results={results.searchResults} />}
       </div>
     </div>
   );

@@ -1,48 +1,21 @@
-export default function Result() {
-  const object = {
-    deltaScore: 69,
-    summaries: [
-      {
-        id: 1,
-        title: "bish",
-        summary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        link: "www.paultreanor.com",
-      },
-      {
-        id: 2,
-        title: "bash",
-        summary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        link: "www.paultreanor.com",
-      },
-      {
-        id: 3,
-        title: "bosh",
-        summary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        link: "www.paultreanor.com",
-      },
-    ],
-  };
+import React from 'react';
+
+export default function Result({ results }) {
+  // first 3 results 
+  const topResults = results.slice(0, 3);
 
   return (
-    <div className="resultContainer max-w-1/2 space-y-2">
-      <div className="deltaScore font-bold text-lg text-center">
-        <h1>&Delta; {object.deltaScore}</h1>
-      </div>
-      {object.summaries.map((summary) => (
-        <div
-          key={summary.id}
-          className="summary border rounded-lg hover:shadow-md p-4 hover:bg-blue-100"
-        >
-          <h1 className="font-bold">{summary.title}</h1>
-          <p>{summary.summary}</p>
-          <p>
-            <a href={summary.link} className="text-blue-500">
-              {summary.link}
-            </a>
-          </p>
+    <div className="resultContainer max-w-1/2 mt-5">
+      {topResults.map((result, index) => (
+        <div key={index} className="summary border rounded-lg hover:shadow-md p-4 hover:bg-blue-100 mt-4">
+          <div className="font-extrabold text-xl">𝚫 Score: {
+            Math.floor(Math.random() * 100) + 1
+            }</div>
+          <h2 className="font-bold my-1">{result.title}</h2>
+          <p className="my-1">{result.snippet}</p>
+          <a href={result.link} className="text-blue-500 my-1">
+            {result.link}
+          </a>
         </div>
       ))}
     </div>
