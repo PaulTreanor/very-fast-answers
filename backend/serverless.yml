@@ -1,5 +1,5 @@
 service: backend
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 provider:
   name: aws
@@ -7,18 +7,18 @@ provider:
 
 functions:
   api:
-    handler: gpt-handler.handler
+    handler: handlers/gpt-handler.handler
     events:
       - httpApi:
           path: /
           method: post
     environment: ${file(env.json)}
-  # scraperAPI:
-  #   handler: web-scraper-handler.handler
-  #   events:
-  #     - httpApi:
-  #         path: /
-  #         method: post
+  scraperAPI:
+    handler: handlers/web-scraper-handler.handler
+    events:
+      - httpApi:
+          path: /scrape
+          method: post
 
 plugins:
   - serverless-offline
